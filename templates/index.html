@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylesheet.css">
+    <title>Boggle Game</title>
+</head>
+
+<body>
+    <h1>Boggle Game</h1>
+    <section id="game">
+        <p>High Score:
+            <b>{{ highscore }}</b>
+            in {{ totalPlays }} plays
+        </p>
+        <form action=""></form>
+        <form action="/reset-game" method="POST" class="reset">
+            <button>reset</button>
+        </form>
+
+        <div>
+            <table class="board">
+                <tbody>
+                    {% for row in board %}
+                    <tr>
+                        {% for letter in row %}
+                        <td>{{ letter }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+        <p>
+            Score: <b class="score">0</b>
+            Seconds Left: <b class="timer"></b>
+        </p>
+        <form method="POST" class="word-input">
+            <input name="word" class="word" autofocus>
+            <button>Enter</button>
+        </form>
+        <p class="msg">
+            <!-- our JS will put messages here dynamically -->
+        </p>
+        <form action="/" class="play-again" style="display: none;">
+            <button>Play Again!</button>
+        </form>
+        <div>
+
+            <ul class="words">
+                <h3>Added Words:</h2>
+                    <!-- our JS will words here as they score -->
+            </ul>
+        </div>
+    </section>
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
+    <script src="/static/boggle.js"></script>
+</body>
+
+</html>
